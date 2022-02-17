@@ -1,0 +1,13 @@
+{
+    "entryPagePath": "pages/index/index",
+    "pages": [
+        "pages/index/index"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#D8322E",
+        "navigationBarTitleText": "夏天的风+",
+        "navigationBarTextStyle": "white"
+    },
+    "sitemapLocation": "sitemap.json"
+}

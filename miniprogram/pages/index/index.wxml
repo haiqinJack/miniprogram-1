@@ -1,0 +1,2 @@
+<!--pages/index/index.wxml-->
+<van-button >按钮</van-button>
