@@ -1,13 +1,44 @@
 {
-    "entryPagePath": "pages/index/index",
+    "entryPagePath": "pages/order/index",
     "pages": [
-        "pages/index/index"
+        "pages/index/index",
+        "pages/order/index",
+        "pages/goods/index",
+        "pages/user/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#D8322E",
         "navigationBarTitleText": "夏天的风+",
         "navigationBarTextStyle": "white"
+    },
+    "tabBar": {
+        "custom": true,
+        "color": "#000000",
+        "selectedColor": "#000000",
+        "backgroundColor": "#000000",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页"
+            },
+            {
+                "pagePath": "pages/order/index",
+                "text": "预约"
+            },
+            {
+                "pagePath": "pages/goods/index",
+                "text": "分类"
+            },
+            {
+                "pagePath": "pages/user/index",
+                "text": "我的"
+            }
+        ]
+    },
+    "usingComponents": {
+        "van-button": "@vant/weapp/button/index",
+        "van-divider": "@vant/weapp/divider/index"
     },
     "sitemapLocation": "sitemap.json"
 }
