@@ -1,0 +1,28 @@
+<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}" />
+<view class="box bg-light">  
+  <van-row class="card-row" gutter="15">
+    <van-col span="12" wx:for="{{ 20 }}" wx:key="index">
+      <view class="card-item bg-white shadow-sm">
+        <van-image 
+          width="100%"
+          height="10rem"
+          fit="fill" 
+          src="https://img.yzcdn.cn/vant/cat.jpeg" 
+        />
+        <view class="van-multi-ellipsis--l2 font-weight-bold">
+          这是一段最多显示两行的文字，后面的内容会省略。
+        </view>
+        <view>
+         
+        </view>
+        <view class="card-footer">
+          <view class="van-ellipsis card-price-box">
+            ¥<view class="card-price">88</view>
+          </view>
+          <van-button color="#ffc107" round  size="small" bind:click="onDisplay">预约</van-button>
+        </view>
+      </view>
+    </van-col>
+</van-row>
+<van-divider contentPosition="center" >没有更多了</van-divider>
+</view>

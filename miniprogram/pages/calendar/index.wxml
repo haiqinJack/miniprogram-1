@@ -1,0 +1,34 @@
+<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}" />
+<van-calendar
+    type="{{ type }}"
+    color="{{ color }}"
+    max-date="{{ maxDate }}"
+    formatter="{{ formatter }}"
+    poppable="{{ false }}"
+    show-confirm="{{ false }}"
+    show-title="{{ false }}"
+    bind:select="onSelect"
+/>
+<van-popup 
+    show="{{ show }}"
+    closeable
+    position="bottom"
+    custom-style="height: 60%"
+    bind:close="onClose"
+>
+  <view class="title bg-info">预约时间: {{ date }}</view>
+  <view class="item d-flex justify-content-between align-items-center border-bottom">
+    <view class="d-flex">
+      <view>9:00-9:30</view>
+      <view>（已预约：1人）</view>
+    </view>
+    <button 
+      class="my-button rounded-pill"
+      type="primary"
+      data-time="{{ '9:00-9:30' }}"
+      bindtap="openReservationForm"
+    >
+      立即预约
+    </button>
+  </view>
+</van-popup>

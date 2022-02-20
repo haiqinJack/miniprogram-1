@@ -5,3 +5,118 @@ page {
         "Microsoft Yahei", sans-serif;
     padding-bottom: 60rpx;
 }
+
+.border-bottom {
+    border-bottom: 1px solid #dee2e6 !important;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.d-flex {
+    display: flex;
+}
+.flex-row {
+    flex-direction: row !important;
+}
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+
+.justify-content-between {
+    justify-content: space-between !important;
+}
+
+.justify-content-around {
+    justify-content: space-around !important;
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+/* Color */
+.text-warning {
+    color: #ffc107 !important;
+}
+.text-secondary {
+    color: #6c757d !important;
+}
+.text-muted {
+    color: #6c757d !important;
+}
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+.bg-info {
+    background-color: #90c6d5 !important;
+}
+
+.bg-white {
+    background-color: #fff !important;
+}
+
+.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.font-weight-bold {
+    font-weight: 700 !important;
+}
+.font-weight-bolder {
+    font-weight: bolder !important;
+}
+.border {
+    border: 1px solid #dee2e6 !important;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+/* 圆角 */
+.rounded-pill {
+    border-radius: 50rem !important;
+}
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.my-button {
+    box-sizing: border-box;
+    display: inline-flex;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+.my-button-circle {
+    display: flex;
+    align-items: center !important;
+    flex-direction: row;
+    justify-content: center;
+    width: 160rpx;
+    height: 160rpx;
+    box-sizing: border-box;
+    display: inline-flex;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+
+.item-middle {
+    display: flex;
+    justify-content: center; /*主轴上居中*/
+    align-items: center; /*侧轴上居中*/
+}
+
+.align-middle {
+    vertical-align: middle !important;
+}

@@ -1,0 +1,43 @@
+.box {
+    margin: 0 30rpx;
+}
+.card-row {
+    width: 100%;
+}
+.card-item {
+    width: 100%;
+    margin-top: 30rpx;
+    display: flex;
+    flex-direction: column;
+}
+.card-footer {
+    height: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    padding: 30rpx 15rpx;
+}
+.card-price-box {
+    display: inline-block;
+    width: 60%;
+    color: #e54d42;
+}
+.card-price {
+    display: inline;
+    font-size: 1.4rem;
+}
+
+/* 遮住tabbar */
+.van-popup--bottom {
+    z-index: 10000 !important;
+}
+
+.van-popup--right {
+    z-index: 20000 !important;
+}
+.van-calendar__selected-day1 {
+    background-color: white !important;
+}
+
+.calendar {
+    --calendar-height: 100vh;
+}

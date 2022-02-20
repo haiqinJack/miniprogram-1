@@ -1,0 +1,11 @@
+.title {
+    padding-left: 1rem;
+    line-height: 3rem;
+    min-height: 3rem;
+}
+
+.item {
+    line-height: 3rem;
+    min-height: 5rem;
+    padding: 0 1rem;
+}

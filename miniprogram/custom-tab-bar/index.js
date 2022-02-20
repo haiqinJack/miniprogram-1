@@ -9,7 +9,7 @@ Page({
         this.setData({ active: event.detail });
         if (index == 1) {
             wx.switchTab({
-                url: "/pages/order/index",
+                url: "/pages/reservation/index",
             });
         } else if (index == 2) {
             wx.switchTab({

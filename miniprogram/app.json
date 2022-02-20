@@ -1,10 +1,12 @@
 {
-    "entryPagePath": "pages/order/index",
+    "entryPagePath": "pages/reservation/index",
     "pages": [
         "pages/index/index",
-        "pages/order/index",
+        "pages/reservation/index",
         "pages/goods/index",
-        "pages/user/index"
+        "pages/user/index",
+        "pages/calendar/index",
+        "pages/reservationForm/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -23,7 +25,7 @@
                 "text": "首页"
             },
             {
-                "pagePath": "pages/order/index",
+                "pagePath": "pages/reservation/index",
                 "text": "预约"
             },
             {
@@ -38,7 +40,8 @@
     },
     "usingComponents": {
         "van-button": "@vant/weapp/button/index",
-        "van-divider": "@vant/weapp/divider/index"
+        "van-divider": "@vant/weapp/divider/index",
+        "van-icon": "@vant/weapp/icon/index"
     },
     "sitemapLocation": "sitemap.json"
 }

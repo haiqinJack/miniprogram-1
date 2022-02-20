@@ -1,0 +1,63 @@
+<view class="bg-light">
+    <view class="card shadow-sm bg-white">
+        <view class="d-flex border-bottom">
+            <view class="label">个人信息</view>
+        </view>
+        <view class="d-flex border-bottom">
+            <view class="label text-muted">姓名</view>
+            <view class="value">叶红</view>
+        </view>
+        <view class="d-flex border-bottom">
+            <view class="label text-muted">电话</view>
+            <view class="value">19163802436</view>
+        </view>
+    </view>
+    <view class="card shadow-sm bg-white ">
+        <view class="d-flex border-bottom">
+            <view class="label">宠物信息</view>
+        </view>
+        <view>
+            <van-row >
+                <van-col custom-class="item-middle" span="6" wx:for="{{3}}" wx:key="index">
+                    <view class="position-relative">
+                        <van-image 
+                            round
+                            width="160rpx" 
+                            height="160rpx" 
+                            src="https://img.yzcdn.cn/vant/cat.jpeg" 
+                        />
+                        <view 
+                            class="mid text-center van-ellipsis position-absolute"
+                        >
+                            肉肉肉肉
+                        </view>
+                    </view>
+                </van-col>
+                <van-col span="6">
+                    <button class="my-button-circle rounded-circle border">
+                        <van-icon name="plus" size="80rpx"/>
+                    </button>
+                </van-col>
+            </van-row>
+        </view>
+    </view>
+    <view class="card shadow-sm bg-white ">
+        <view class="cell d-flex border-bottom">
+            <view class="label">预约信息</view>
+        </view>
+        <view class="cell d-flex border-bottom">
+            <view class="label text-muted">预约地点</view>
+            <view class="value value2">南宁市西乡塘鲁班路夏天的风（盛天尚都店）</view>
+            <view class="item-middle"  style="width: 100%;"><van-icon   name="location-o" size="2rem" color="green"/></view>
+        </view>
+        <view class="cell d-flex border-bottom">
+            <view class="label text-muted">预约时间</view>
+            <view class="value">{{date}} {{time}}</view>
+        </view>
+        <view class="cell d-flex border-bottom">
+            <view class="label text-muted">预约项目</view>
+            <view class="value">泰迪</view>
+        </view>
+    </view>
+<van-button custom-style="width: 600rpx;" type="info" block round>确定预约</van-button>
+</view>
