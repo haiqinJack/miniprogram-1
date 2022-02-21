@@ -6,8 +6,49 @@ Page({
     data: {
         date: "",
         time: "",
+        modelPets: false,
+        list: [
+            {
+                id: 1,
+                name: "肉肉",
+                avatarUrl: "https://img.yzcdn.cn/vant/cat.jpeg",
+                default: true,
+            },
+            {
+                id: 2,
+                name: "哈哈",
+                avatarUrl: "https://img.yzcdn.cn/vant/cat.jpeg",
+                default: false,
+            },
+        ],
+        result: [],
+    },
+    onChange(event) {
+        const eventChannel = this.getOpenerEventChannel();
+        console.log("eventChannel", eventChannel);
+        console.log(event.detail, "event.detail");
+        this.setData({
+            result: event.detail,
+        });
+    },
+    toggle(event) {
+        const { index } = event.currentTarget.dataset;
+        const checkbox = this.selectComponent(`.checkboxes-${index}`);
+        checkbox.toggle();
     },
 
+    noop() {},
+    openModelPets() {
+        wx.navigateTo({
+            url: "../pets/index",
+        });
+    },
+    onClose() {
+        console.log(this.data.result, "result");
+        this.setData({
+            modelPets: false,
+        });
+    },
     /**
      * 生命周期函数--监听页面加载
      */
@@ -27,9 +68,18 @@ Page({
             time = data.time;
             console.log(date, "date");
         });
+
+        let result = [];
+        let item = this.data.list;
+        for (let i = 0; i < item.length; i++) {
+            if (this.data.list[i].default) {
+                result.push(item[i]);
+            }
+        }
         this.setData({
             date,
             time,
+            result,
         });
     },
 

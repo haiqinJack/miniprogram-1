@@ -35,3 +35,6 @@
     border-bottom-right-radius: 0.48rem !important;
     border-bottom-left-radius: 0.48rem !important;
 }
+.value-class {
+    flex: none !important;
+}

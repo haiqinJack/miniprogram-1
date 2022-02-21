@@ -1,0 +1,36 @@
+<view class="bg-light">
+    <view class="bg-white border" style="margin-bottom: 40rpx;" wx:for="{{3}}" wx:key="index" > 
+        <van-swipe-cell right-width="{{ 65 }}" >
+            <van-card
+                custom-class="bg-white"
+            >
+                <view slot="title" class="d-flex align-items-center">
+                    <view class="van-ellipsis font-weight-bold" style="font-size: 32rpx;line-height: 70rpx;">
+                        肉肉
+                    </view>
+                    <image 
+                        style="width: 32rpx; height: 32rpx;"
+                        width="32rpx" 
+                        height="32rpx" 
+                        src="../../images/sex0.png">
+                    </image>
+                </view>
+                <view slot="desc">
+                    <van-tag type="primary" style="margin-right: 20rpx;">英短猫</van-tag>
+                    <van-tag type="primary" style="margin-right: 20rpx;">长毛</van-tag>
+                </view>
+                <view slot="thumb">
+                    <van-image
+                        round
+                        radius="none"
+                        width="5.5rem"
+                        height="5.5rem"
+                        src="https://img.yzcdn.cn/vant/cat.jpeg"
+                    />
+                </view>
+            </van-card>
+            <view slot="right">删除</view>
+        </van-swipe-cell>
+    </view>
+    <van-button size="large" block round>+添加宠物档案</van-button>
+</view>

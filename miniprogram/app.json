@@ -6,7 +6,8 @@
         "pages/goods/index",
         "pages/user/index",
         "pages/calendar/index",
-        "pages/reservationForm/index"
+        "pages/reservationForm/index",
+        "pages/pets/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
@@ -41,7 +42,8 @@
     "usingComponents": {
         "van-button": "@vant/weapp/button/index",
         "van-divider": "@vant/weapp/divider/index",
-        "van-icon": "@vant/weapp/icon/index"
+        "van-icon": "@vant/weapp/icon/index",
+        "van-image": "@vant/weapp/image/index"
     },
     "sitemapLocation": "sitemap.json"
 }
