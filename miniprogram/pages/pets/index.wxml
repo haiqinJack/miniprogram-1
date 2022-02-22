@@ -1,23 +1,36 @@
 <view class="bg-light">
-    <view class="bg-white border" style="margin-bottom: 40rpx;" wx:for="{{3}}" wx:key="index" > 
-        <van-swipe-cell right-width="{{ 65 }}" >
+    <view class="bg-white border" style="margin-bottom: 40rpx;" wx:for="{{petsData}}" wx:key="index" > 
+        <van-swipe-cell 
+            right-width="{{ 65 }}" 
+            async-close
+        >
             <van-card
                 custom-class="bg-white"
             >
                 <view slot="title" class="d-flex align-items-center">
                     <view class="van-ellipsis font-weight-bold" style="font-size: 32rpx;line-height: 70rpx;">
-                        肉肉
+                        {{ item.name }}
                     </view>
                     <image 
                         style="width: 32rpx; height: 32rpx;"
                         width="32rpx" 
                         height="32rpx" 
-                        src="../../images/sex0.png">
+                        src="{{ item.sex ? '../../images/sex1.png': '../../images/sex0.png'}}">
                     </image>
                 </view>
                 <view slot="desc">
-                    <van-tag type="primary" style="margin-right: 20rpx;">英短猫</van-tag>
-                    <van-tag type="primary" style="margin-right: 20rpx;">长毛</van-tag>
+                    <!-- <van-tag type="primary" style="margin-right: 20rpx;">{{ item.category }}</van-tag> -->
+                    <block wx:if="{{ item.tags.length > 0}}" >
+                        <van-tag 
+                            wx:for="{{ item.tags }}" 
+                            wx:for-item ="tag" 
+                            wx:key="tag"
+                            type="primary" 
+                            style="margin-right: 20rpx;"
+                        >
+                            {{ tag}}
+                        </van-tag>
+                    </block>
                 </view>
                 <view slot="thumb">
                     <van-image
@@ -25,11 +38,11 @@
                         radius="none"
                         width="5.5rem"
                         height="5.5rem"
-                        src="https://img.yzcdn.cn/vant/cat.jpeg"
+                        src="{{ item.imageURL }}"
                     />
                 </view>
             </van-card>
-            <view slot="right">删除</view>
+            <view class="right-cell item-middle" slot="right" bindtap="delete">删除</view>
         </van-swipe-cell>
     </view>
     <van-button size="large" block round>+添加宠物档案</van-button>

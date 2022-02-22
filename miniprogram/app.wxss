@@ -124,3 +124,8 @@ page {
 .my-icon-extra::before {
     content: "&#xe605;";
 }
+.right-cell {
+    width: 130rpx;
+    background-color: red;
+    height: 100%;
+}

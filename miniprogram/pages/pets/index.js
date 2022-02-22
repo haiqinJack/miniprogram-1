@@ -1,13 +1,37 @@
-// pages/pets/index.js
+// import Notify from "../../miniprogram_npm/@vant/weapp/notify";
 Page({
     /**
      * 页面的初始数据
      */
     data: {
-        imageURL:
-            "https://636c-cloud1-4gknyl1ob42fa28a-1252593671.tcb.qcloud.la/%E6%80%A7%E5%88%AB%E5%A5%B3.png?sign=260926d893406672c40c6dbb04622370&t=1645456871",
+        petsData: [
+            {
+                id: "123",
+                name: "123",
+                imageURL:
+                    "https://636c-cloud1-4gknyl1ob42fa28a-1252593671.tcb.qcloud.la/%E6%80%A7%E5%88%AB%E5%A5%B3.png?sign=260926d893406672c40c6dbb04622370&t=1645456871",
+                category: "猫",
+                tags: ["英短", "肥胖", "可爱"],
+                sex: 0,
+                weight: "10",
+                sterilization: 0,
+                birthday: "",
+            },
+        ],
     },
-
+    delete() {
+        wx.showModal({
+            title: "提示",
+            content: "确定删除吗",
+            success(res) {
+                if (res.confirm) {
+                    console.log("用户点击确定");
+                } else if (res.cancel) {
+                    console.log("用户点击取消");
+                }
+            },
+        });
+    },
     /**
      * 生命周期函数--监听页面加载
      */
