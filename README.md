@@ -10,3 +10,4 @@ git push -u origin main
 git remote add origin https://github.com/haiqinJack/miniprogram-1.git
 git branch -M main
 git push -u origin main
+ghp_k4CrOJNrb65YCzRZ7gNYXmiLe7umlG2HJj
