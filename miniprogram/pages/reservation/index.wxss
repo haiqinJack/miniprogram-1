@@ -1,5 +1,6 @@
 .box {
-    margin: 0 30rpx;
+    padding: 0 30rpx;
+    width: 100%;
 }
 .card-row {
     width: 100%;
@@ -25,19 +26,6 @@
     display: inline;
     font-size: 1.4rem;
 }
-
-/* 遮住tabbar */
-.van-popup--bottom {
-    z-index: 10000 !important;
-}
-
-.van-popup--right {
-    z-index: 20000 !important;
-}
-.van-calendar__selected-day1 {
-    background-color: white !important;
-}
-
-.calendar {
-    --calendar-height: 100vh;
+.tep {
+    position: relative !important;
 }

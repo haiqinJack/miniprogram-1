@@ -3,5 +3,6 @@
     "usingComponents": {
         "van-calendar": "@vant/weapp/calendar/index",
         "van-popup": "@vant/weapp/popup/index"
-    }
+    },
+    "navigationBarTitleText": "选择预约时间"
 }

@@ -4,9 +4,12 @@ Page({
      * 页面的初始数据
      */
     data: {
+        dataList: {},
+        username: "",
+        phone: "",
+        choosePets: [],
         date: "",
         time: "",
-        modelPets: false,
         list: [
             {
                 id: 1,
@@ -14,14 +17,52 @@ Page({
                 avatarUrl: "https://img.yzcdn.cn/vant/cat.jpeg",
                 default: true,
             },
-            {
-                id: 2,
-                name: "哈哈",
-                avatarUrl: "https://img.yzcdn.cn/vant/cat.jpeg",
-                default: false,
-            },
         ],
         result: [],
+        shop: {},
+    },
+    confirmReservation() {
+        const { username, phone, date, time, shop, dataList } = this.data;
+        if (username && phone && date && time && shop) {
+            wx.cloud
+                .database()
+                .collection("user-appointment")
+                .add({
+                    data: {
+                        username,
+                        phone,
+                        date,
+                        time,
+                        shop: shop.title,
+                        imageUrl: dataList.imageUrl,
+                        appointment: dataList.title,
+                        _createTime: new Date().getTime(),
+                        _updateTime: new Date().getTime(),
+                        status: "接待中", //接待中
+                    },
+                })
+                .then((res) => {
+                    wx.showToast({
+                        title: "预约成功！",
+                        success: function () {
+                            wx.reLaunch({
+                                url: "../userAppointment/index",
+                            });
+                        },
+                    });
+                })
+                .catch((err) => {
+                    wx.showToast({
+                        title: "服务器繁忙！请稍后再试",
+                        icon: "error",
+                    });
+                });
+        } else {
+            wx.showToast({
+                title: "请填写完整！",
+                icon: "error",
+            });
+        }
     },
     onChange(event) {
         const eventChannel = this.getOpenerEventChannel();
@@ -31,13 +72,6 @@ Page({
             result: event.detail,
         });
     },
-    toggle(event) {
-        const { index } = event.currentTarget.dataset;
-        const checkbox = this.selectComponent(`.checkboxes-${index}`);
-        checkbox.toggle();
-    },
-
-    noop() {},
     openModelPets() {
         wx.navigateTo({
             url: "../pets/index",
@@ -53,11 +87,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        let date = this.data.date;
-        let time = this.data.time;
-        wx.setNavigationBarTitle({
-            title: "填写预约信息",
-        });
+        let { date, time, dataList } = this.data;
         const eventChannel = this.getOpenerEventChannel();
         eventChannel.emit("acceptDataFromOpenedPage", {
             data: "acceptDataFromOpenedPage",
@@ -66,7 +96,8 @@ Page({
         eventChannel.on("acceptDataFromOpenerPage", function (data) {
             date = data.date;
             time = data.time;
-            console.log(date, "date");
+            dataList = data.dataList;
+            console.log(date, "date", dataList);
         });
 
         let result = [];
@@ -80,43 +111,17 @@ Page({
             date,
             time,
             result,
+            dataList,
         });
     },
 
     /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {},
-
-    /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {},
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-        console.log("onHide");
+    onShow: function () {
+        const shop = wx.getStorageSync("shop");
+        this.setData({
+            shop,
+        });
     },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {},
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {},
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {},
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {},
 });

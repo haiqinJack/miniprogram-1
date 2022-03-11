@@ -1,2 +1,33 @@
 <!--pages/user/index.wxml-->
-<text>pages/user/index.wxml</text>
+<view class="bg-light" style="min-height: 99vh;">
+    <view class="d-flex align-items-center flex-column" style="margin-bottom: 2rem; padding-top: 2rem;">
+        <block wx:if="{{ !hasUserInfo }}">
+            <van-image
+                round
+                width="5rem"
+                height="5rem"
+                src=""
+            />
+            <button bindtap="onInfo">登录</button>
+        </block>
+        <block wx:else> 
+            <van-image
+                wx:if="{{ userInfo.avatarUrl }}"
+                round
+                width="5rem"
+                height="5rem"
+                src="{{ userInfo.avatarUrl }}"
+            />
+            
+            <view wx:if="{{ userInfo.nickName }}">
+                {{ userInfo.nickName }}
+            </view>
+        </block>
+    </view>
+    <van-cell-group custom-style="margin-top: 5rem;">
+        <van-cell custom-style="height: 4rem;" title="我的宠物" bindtap="to" data-url="{{'../pets/index'}}" is-link center icon="location-o" />
+        <van-cell custom-style="height: 4rem;" title="我的预约"
+        bindtap="to" icon="location-o" data-url="{{'../userAppointment/index'}}" is-link center/>
+        <van-cell custom-style="height: 4rem;" title="我的订单" icon="location-o" is-link center/>
+    </van-cell-group>
+</view>

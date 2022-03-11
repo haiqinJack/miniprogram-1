@@ -1,2 +1,50 @@
 <!--pages/index/index.wxml-->
-<text>pages/index/index.wxml</text>
+<swiper
+    indicator-dots
+    autoplay
+    style="height: 750rpx; "
+>
+    <swiper-item style="z-index: 1;"> 
+        <van-image
+            width="750rpx"
+            height="750rpx"
+            src="https://636c-cloud1-4gknyl1ob42fa28a-1252593671.tcb.qcloud.la/logo.jpeg?sign=64cbb8362fb15020c4d8cd6e1ac0eb20&t=1646980897"
+        >
+        </van-image>
+    </swiper-item>
+</swiper>
+
+<view style="height: 180px;position: relative; width: 700rpx;margin: 0 auto; margin-top: -40rpx; " class="d-flex align-middle bg-light my-radius-left my-radius-right" >
+    <view style="width: 50%;padding-top: 20rpx;" class="bg-white shadow d-flex flex-column align-items-center my-radius-left ">
+        <view>
+            <image
+                style="width: 140rpx; height: 140rpx;"
+                src="../../images/xizao.png"
+            >
+            </image>
+        </view>
+        <view style="font-size: x-large; line-height: 3rem; ">
+            洗护预约
+        </view>
+        <view style="font-size: x-small;" class="text-muted">
+            爱洗澡 爱健康
+        </view>
+        
+    </view>
+    <view style="width: 50%; padding-top: 20rpx;" class="bg-white shadow d-flex flex-column align-items-center my-radius-right">
+        <view>
+            <image
+                style="width: 140rpx; height: 140rpx;"
+                src="../../images/food.png"
+            >
+            </image>
+        </view>
+        <view style="font-size: x-large; line-height: 3rem; ">
+            宠物粮食
+        </view>
+        <view style="font-size: x-small;" class="text-muted">
+            买好粮 身倍棒
+        </view>
+        
+    </view>
+</view>

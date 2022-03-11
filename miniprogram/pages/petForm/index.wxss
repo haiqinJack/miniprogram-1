@@ -1,0 +1,21 @@
+/* pages/petForm/index.wxss */
+.image-box {
+    width: 4rem;
+    height: 4rem;
+    background-color: brown;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /*主轴上居中*/
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.image-url {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+}
+.image-round {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}

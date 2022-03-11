@@ -1,77 +1,96 @@
-// import Notify from "../../miniprogram_npm/@vant/weapp/notify";
+const utils = require("../../utils/index");
+const db = wx.cloud.database();
 Page({
     /**
      * 页面的初始数据
      */
     data: {
         petsData: [
-            {
-                id: "123",
-                name: "123",
-                imageURL:
-                    "https://636c-cloud1-4gknyl1ob42fa28a-1252593671.tcb.qcloud.la/%E6%80%A7%E5%88%AB%E5%A5%B3.png?sign=260926d893406672c40c6dbb04622370&t=1645456871",
-                category: "猫",
-                tags: ["英短", "肥胖", "可爱"],
-                sex: 0,
-                weight: "10",
-                sterilization: 0,
-                birthday: "",
-            },
+            // {
+            //     id: "123==",
+            //     name: "肉肉=",
+            //     imageURL:
+            //         "https://636c-cloud1-4gknyl1ob42fa28a-1252593671.tcb.qcloud.la/%E6%80%A7%E5%88%AB%E5%A5%B3.png?sign=260926d893406672c40c6dbb04622370&t=1645456871",
+            //     category: "猫",
+            //     tags: ["英短", "肥胖", "可爱"],
+            //     sex: 0,
+            //     weight: "10",
+            //     sterilization: 0,
+            //     birthday: "",
+            // },
         ],
     },
-    delete() {
-        wx.showModal({
-            title: "提示",
-            content: "确定删除吗",
-            success(res) {
-                if (res.confirm) {
-                    console.log("用户点击确定");
-                } else if (res.cancel) {
-                    console.log("用户点击取消");
-                }
-            },
+    onClose(event) {
+        const { position, instance, name } = event.detail;
+        const { _id, index } = instance.dataset;
+        switch (position) {
+            case "cell":
+                instance.close();
+                break;
+            case "right":
+                wx.showModal({
+                    title: "提示",
+                    content: `确定删除${name}吗?`,
+                    success: (res) => {
+                        if (res.confirm) {
+                            let _petsData = this.data.petsData;
+                            this.deletePet(_id);
+                            this.deletePetImage(_petsData[index].imageUrl);
+                            this.setData({
+                                petsData: utils._removeArrayByIndex(
+                                    _petsData,
+                                    index
+                                ),
+                            });
+
+                            console.log("用户点击确定");
+                        } else if (res.cancel) {
+                            console.log("用户点击取消");
+                        }
+                    },
+                });
+                instance.close();
+                break;
+        }
+    },
+    deletePetImage(imageUrl) {
+        wx.cloud.deleteFile({
+            fileList: [imageUrl],
         });
     },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-        const eventChannel = this.getOpenerEventChannel();
-        console.log("pets onload", eventChannel);
+    deletePet(_id) {
+        db.collection("pets")
+            .where({
+                _id,
+            })
+            .remove();
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {},
+    onAddPet() {
+        wx.navigateTo({
+            url: "../petForm/index",
+        });
+    },
+    getPets() {
+        db.collection("pets")
+            .field({
+                _openid: false,
+                weight: false,
+                isSterilization: false,
+                birthday: false,
+            })
+            .get()
+            .then((res) => {
+                console.log(res, "res----");
+                this.setData({
+                    petsData: res.data,
+                });
+            });
+    },
 
     /**
      * 生命周期函数--监听页面显示
      */
-    onShow: function () {},
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {},
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {},
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {},
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {},
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {},
+    onShow: function (options) {
+        this.getPets();
+    },
 });

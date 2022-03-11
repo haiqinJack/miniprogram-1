@@ -1,5 +1,5 @@
 {
-    "entryPagePath": "pages/reservation/index",
+    "entryPagePath": "pages/index/index",
     "pages": [
         "pages/index/index",
         "pages/reservation/index",
@@ -7,13 +7,16 @@
         "pages/user/index",
         "pages/calendar/index",
         "pages/reservationForm/index",
-        "pages/pets/index"
+        "pages/pets/index",
+        "pages/petForm/index",
+        "pages/myMap/index",
+        "pages/userAppointment/index"
     ],
     "window": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#D8322E",
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
         "navigationBarTitleText": "夏天的风+",
-        "navigationBarTextStyle": "white"
+        "backgroundTextStyle": "light"
     },
     "tabBar": {
         "custom": true,
@@ -44,6 +47,11 @@
         "van-divider": "@vant/weapp/divider/index",
         "van-icon": "@vant/weapp/icon/index",
         "van-image": "@vant/weapp/image/index"
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "根据用户当前位置推荐附近门店"
+        }
     },
     "sitemapLocation": "sitemap.json"
 }

@@ -1,0 +1,45 @@
+<!--pages/myMap/index.wxml-->
+<block wx:if="{{ show }}">
+    <map 
+        style="width: auto; height: 400rpx;"
+        longitude="{{ longitude }}" 
+        latitude="{{ latitude }}"
+        show-location
+        markers="{{markers}}"
+        bindmarkertap="handlemarkertap"
+        bindcallouttap="chooseMarker"
+    >
+        <cover-view slot="callout">
+            <cover-view 
+                wx:for="{{ markers }}"
+                wx:key="index"
+                marker-id="{{ item.id }}" 
+                style="background-color: #fff; padding: 20rpx 20rpx; margin-bottom: 20rpx;" 
+            >
+                {{ item.title }} >
+            </cover-view>
+        </cover-view>
+    </map>
+    <view>
+        <view>
+            <van-card 
+                wx:for="{{ markers }}"
+                wx:key="index"
+                bindtap="chooseCard"
+                data-id="{{ item.id }}"
+                desc="{{ item.desc }}"
+                title="{{ item.title }}"
+                thumb="{{ 'https://636c-cloud1-4gknyl1ob42fa28a-1252593671.tcb.qcloud.la/logo.jpeg?sign=341f68cc7e89a9b8e69e5bd113806726&t=1646834975' }}"
+            >   
+                <view slot="footer">
+                    距离您 {{ item.distance}}km
+                </view>
+            </van-card>
+        </view>
+    </view>
+</block>
+<block wx:else>
+    <view bindtap="openSetting">
+        重新授权
+    </view>
+</block>

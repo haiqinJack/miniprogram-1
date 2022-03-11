@@ -2,24 +2,39 @@
 <view class="bg-light">
     <view class="card shadow-sm bg-white">
         <view class="d-flex border-bottom">
-            <view class="label">个人信息</view>
+            <view class="label">主人信息</view>
         </view>
-        <view class="d-flex border-bottom">
-            <view class="label text-muted">姓名</view>
-            <view class="value">叶红</view>
+        <view class="d-flex border-bottom align-items-center">
+            <view class="d-flex label text-muted">姓名
+                <view style="color: red;">*</view>
+            </view>
+            <input 
+                    confirm-type="next"
+                    type="text" 
+                    model:value="{{ phone }}"
+                    placeholder="请输入姓名"
+                    bindtap="onChange"
+                />
         </view>
-        <view class="d-flex border-bottom">
-            <view class="label text-muted">电话</view>
-            <view class="value">19163802436</view>
+        <view class="d-flex border-bottom align-items-center">
+            <view class="d-flex label text-muted">电话
+                <view style="color: red;">*</view>
+            </view>
+            <input 
+                    type="number" 
+                    model:value="{{ username }}"
+                    placeholder="请输入手机号"
+                />
         </view>
     </view>
-    <view class="card shadow-sm bg-white ">
+    <!-- 宠物信息 -->
+    <!-- <view class="card shadow-sm bg-white ">
         <view class="d-flex border-bottom">
             <view class="label">宠物信息</view>
         </view>
         <view>
             <van-row >
-                <van-col custom-class="item-middle" span="6" wx:for="{{3}}" wx:key="index">
+                <van-col custom-class="item-middle" span="6" wx:for="{{ 3 }}" wx:key="index">
                     <view class="position-relative">
                         <van-image 
                             round
@@ -41,14 +56,14 @@
                 </van-col>
             </van-row>
         </view>
-    </view>
+    </view> -->
     <view class="card shadow-sm bg-white ">
         <view class="cell d-flex border-bottom">
             <view class="label">预约信息</view>
         </view>
         <view class="cell d-flex border-bottom">
             <view class="label text-muted">预约地点</view>
-            <view class="value value2">南宁市西乡塘鲁班路夏天的风（盛天尚都店）</view>
+            <view class="value value2">{{ shop.title }}</view>
             <view class="item-middle"  style="width: 100%;"><van-icon   name="location-o" size="2rem" color="green"/></view>
         </view>
         <view class="cell d-flex border-bottom">
@@ -57,30 +72,16 @@
         </view>
         <view class="cell d-flex border-bottom">
             <view class="label text-muted">预约项目</view>
-            <view class="value">泰迪</view>
+            <view class="value">{{ dataList.title }}</view>
         </view>
     </view>
-<van-button custom-style="width: 600rpx;" type="info" block round>确定预约</van-button>
+    <van-button 
+        custom-style="width: 600rpx;" 
+        type="info" 
+        block 
+        round
+        bind:click="confirmReservation"
+    >
+        确定预约
+    </van-button>
 </view>
-<van-popup show="{{ modelPets }}" position="top" bind:close="onClose">
-    <van-checkbox-group value="{{ result }}" bind:change="onChange">
-        <van-cell-group>
-            <van-cell
-                wx:for="{{ list }}"
-                wx:key="index"
-                title="复选框 {{ item.id }}{{item.name}}"
-                value-class="value-class"
-                clickable
-                data-index="{{ index }}"
-                bind:click="toggle"
-            >
-            <van-checkbox
-                catch:tap="noop"
-                class="checkboxes-{{ index }}"
-                name="{{ item.id }}"
-            />
-            </van-cell>
-        </van-cell-group>
-    </van-checkbox-group>
-    <button bindtap="onClose">确定</button>
-</van-popup>

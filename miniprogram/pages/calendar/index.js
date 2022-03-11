@@ -1,23 +1,28 @@
 Page({
     data: {
+        dataList: {},
         date: "",
         type: "single",
         show: false,
         color: "#28a745",
-        maxDate: new Date(
-            new Date().getFullYear(),
-            new Date().getMonth() + 1,
-            31
-        ).getTime(),
-        restDate: ["2022/2/18", "2022/2/27", "2022/2/28"],
+        maxDate: new Date().getTime() + 60 * 60 * 24 * 1000 * 7,
+        restDate: ["2022/2/18", "2022/2/27", "2022/2/28"], //休息日
         formatter(day) {
             return day;
         },
     },
-    onLoad() {
-        wx.setNavigationBarTitle({
-            title: "选择预约时间",
+    onLoad(option) {
+        const eventChannel = this.getOpenerEventChannel();
+        eventChannel.on("acceptData", (res) => {
+            console.log(res, "acceptData");
+            this.setData({
+                dataList: res.data,
+                maxDate:
+                    new Date().getTime() +
+                    60 * 60 * 24 * 1000 * (res.data.maxDate - 1),
+            });
         });
+
         const restDate = this.data.restDate;
         this.setData({
             formatter(day) {
@@ -61,18 +66,14 @@ Page({
     },
     openReservationForm(event) {
         let time = event.target.dataset.time;
-        let date = this.data.date;
+        let { dataList, date } = this.data;
         wx.navigateTo({
             url: "../reservationForm/index",
-            events: {
-                someEvent: function (data) {
-                    console.log(data, "eventsomeEvent");
-                },
-            },
             success: function (res) {
                 res.eventChannel.emit("acceptDataFromOpenerPage", {
                     date,
                     time,
+                    dataList,
                 });
             },
         });

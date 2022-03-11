@@ -3,6 +3,10 @@
         <van-swipe-cell 
             right-width="{{ 65 }}" 
             async-close
+            data-index="{{ index }}"
+            data-_id ="{{ item._id }}"
+            name="{{ item.name }}"
+            bind:close="onClose"
         >
             <van-card
                 custom-class="bg-white"
@@ -19,7 +23,13 @@
                     </image>
                 </view>
                 <view slot="desc">
-                    <!-- <van-tag type="primary" style="margin-right: 20rpx;">{{ item.category }}</van-tag> -->
+                    <van-tag 
+                          
+                            type="primary" 
+                            style="margin-right: 20rpx;"
+                        >
+                            {{ item.petBreed }}
+                        </van-tag>
                     <block wx:if="{{ item.tags.length > 0}}" >
                         <van-tag 
                             wx:for="{{ item.tags }}" 
@@ -33,17 +43,28 @@
                     </block>
                 </view>
                 <view slot="thumb">
-                    <van-image
-                        round
-                        radius="none"
-                        width="5.5rem"
-                        height="5.5rem"
-                        src="{{ item.imageURL }}"
-                    />
+                    <block wx:if="{{ item.imageUrl !== ''}}">
+                        <van-image
+                            round
+                            radius="none"
+                            width="5.5rem"
+                            height="5.5rem"
+                            src="{{ item.imageUrl }}"
+                        />
+                    </block>
+                    <block wx:else>
+                        <van-image
+                            round
+                            radius="none"
+                            width="5.5rem"
+                            height="5.5rem"
+                            src="{{ item.imageUrl }}"
+                        />
+                    </block>
                 </view>
             </van-card>
-            <view class="right-cell item-middle" slot="right" bindtap="delete">删除</view>
+            <view class="right-cell item-middle" slot="right">删除</view>
         </van-swipe-cell>
     </view>
-    <van-button size="large" block round>+添加宠物档案</van-button>
+    <van-button size="large" block round bind:click="onAddPet">+添加宠物档案</van-button>
 </view>

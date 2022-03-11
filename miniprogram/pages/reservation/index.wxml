@@ -1,28 +1,63 @@
-<page-meta page-style="{{ show ? 'overflow: hidden;' : '' }}" />
-<view class="box bg-light">  
-  <van-row class="card-row" gutter="15">
-    <van-col span="12" wx:for="{{ 20 }}" wx:key="index">
-      <view class="card-item bg-white shadow-sm">
-        <van-image 
-          width="100%"
-          height="10rem"
-          fit="fill" 
-          src="https://img.yzcdn.cn/vant/cat.jpeg" 
-        />
-        <view class="van-multi-ellipsis--l2 font-weight-bold">
-          这是一段最多显示两行的文字，后面的内容会省略。
+<block wx:if="{{ show }}">
+    <view class="d-flex align-items-center tep" style="height: 3rem;">
+        <van-icon name="location-o" custom-style="padding: 0 1rem;"/>
+        <view class="flex-grow-1">
+            {{ shop.title }}
         </view>
-        <view>
-         
-        </view>
-        <view class="card-footer">
-          <view class="van-ellipsis card-price-box">
-            ¥<view class="card-price">88</view>
-          </view>
-          <van-button color="#ffc107" round  size="small" bind:click="onDisplay">预约</van-button>
-        </view>
-      </view>
-    </van-col>
-</van-row>
-<van-divider contentPosition="center" >没有更多了</van-divider>
-</view>
+        <van-icon name="arrow-down" custom-style="padding: 0 1rem;" bindtap="toMyMap"/>
+    </view>
+
+    <view class="box bg-light">  
+        <van-row class="card-row" gutter="20">  
+            <van-col span="11" wx:for="{{ dataList }}" wx:key="index">
+                <view class="card-item bg-white shadow-sm">
+                    <van-image 
+                        width="100%"
+                        height="10rem"
+                        fit="fill" 
+                        src="{{ item.imageUrl }}" 
+                    />
+                    <view class="van-multi-ellipsis--l2 font-weight-bold">
+                        {{ item.title }}
+                    </view>
+                    <view class="card-footer">
+                        <view class="van-ellipsis card-price-box">
+                            ¥<view class="card-price">
+                                {{ item.price }}
+                            </view>
+                        </view>
+                        <block 
+                            wx:if="{{ item.time && item.time.length > 0 }}"
+                        >
+                            <van-button 
+                                color="#ffc107" 
+                                round  
+                                size="small"  
+                                dataset="{{ item }}"
+                                bind:click="onDisplay"
+                            >
+                                预约
+                            </van-button>
+                        </block>
+                        <block wx:else>
+                            <van-button 
+                                color="#ffc107" 
+                                round  
+                                size="small" 
+                                disabled
+                            >
+                                已约满
+                            </van-button>
+                        </block>
+                    </view>
+                </view>
+            </van-col>
+        </van-row>
+        <van-divider contentPosition="center" >没有更多了</van-divider>
+    </view>
+</block>
+<block wx:else>
+    <van-button class="d-flex item-middle" style="height: 80vh;" bind:click="openSetting">
+        重新授权
+    </van-button>
+</block>

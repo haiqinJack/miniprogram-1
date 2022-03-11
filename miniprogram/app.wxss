@@ -20,10 +20,15 @@ page {
 .flex-row {
     flex-direction: row !important;
 }
+.flex-column {
+    flex-direction: column !important;
+}
 .flex-wrap {
     flex-wrap: wrap !important;
 }
-
+.flex-grow-1 {
+    flex-grow: 1 !important;
+}
 .justify-content-between {
     justify-content: space-between !important;
 }
@@ -45,6 +50,9 @@ page {
 }
 .text-muted {
     color: #6c757d !important;
+}
+.text-danger {
+    color: #ff0000 !important;
 }
 .bg-light {
     background-color: #f8f9fa !important;
@@ -71,10 +79,19 @@ page {
 .font-weight-bolder {
     font-weight: bolder !important;
 }
+
+.font-weight-normal {
+    font-weight: 400 !important;
+}
+.font-weight-lighter {
+    font-weight: lighter !important;
+}
 .border {
     border: 1px solid #dee2e6 !important;
 }
-
+.border-0 {
+    border: 0 !important;
+}
 .position-relative {
     position: relative;
 }

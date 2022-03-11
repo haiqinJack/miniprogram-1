@@ -17,15 +17,15 @@
     bind:close="onClose"
 >
   <view class="title bg-info">预约时间: {{ date }}</view>
-  <view class="item d-flex justify-content-between align-items-center border-bottom">
-    <view class="d-flex">
-      <view>9:00-9:30</view>
-      <view>（已预约：1人）</view>
+  <view class="item d-flex justify-content-between align-items-center border-bottom" wx:for="{{ dataList.time }}" wx:key="index">
+    <view class="d-flex" >
+      <view>{{ item }}</view>
+      <!-- <view>（已预约：1人）</view> -->
     </view>
     <button 
       class="my-button rounded-pill"
       type="primary"
-      data-time="{{ '9:00-9:30' }}"
+      data-time="{{ item }}"
       bindtap="openReservationForm"
     >
       立即预约

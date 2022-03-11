@@ -1,0 +1,8 @@
+.my-radius-left {
+    border-top-left-radius: 1rem !important;
+    border-bottom-left-radius: 1rem !important;
+}
+.my-radius-right {
+    border-top-right-radius: 1rem !important;
+    border-bottom-right-radius: 1rem !important;
+}

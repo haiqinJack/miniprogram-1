@@ -8,6 +8,8 @@
         "van-col": "@vant/weapp/col/index",
         "van-popup": "@vant/weapp/popup/index",
         "van-checkbox": "@vant/weapp/checkbox/index",
-        "van-checkbox-group": "@vant/weapp/checkbox-group/index"
-    }
+        "van-checkbox-group": "@vant/weapp/checkbox-group/index",
+        "van-field": "@vant/weapp/field/index"
+    },
+    "navigationBarTitleText": "填写预约信息"
 }

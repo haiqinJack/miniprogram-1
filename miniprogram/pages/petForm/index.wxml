@@ -1,0 +1,111 @@
+<view class="bg-light" style="min-height: 100vh;">
+    <van-cell-group>
+        <van-cell center title="宠物头像" is-link>
+            
+            <block wx:if="{{ imageUrl == '' }}"> 
+                <view class="image-box" bindtap="onChooseMedia">
+                    <image 
+                        class="image-round"
+                        mode="cover" 
+                        src="../../images/camera.png"
+                    >  
+                    </image>
+                </view>
+            </block>
+            <block wx:else> 
+                <image
+                    class="image-url"
+                    mode="cover"
+                    bindtap="onChooseMedia"
+                    src="{{ imageUrl }}"
+                >
+                </image>
+            </block>
+        </van-cell>
+        <van-cell center title="宠物昵称" required>
+            <input 
+                model:value="{{ name }}"
+                type="nickname" 
+                placeholder="请编辑" 
+                bindinput="handleChange"
+            />
+        </van-cell>
+        <van-cell center title="宠物种类" is-link required>
+            <picker 
+                bindchange="bindPickerChange" 
+                value="{{ arrayIndex }}" 
+                mode="selector"
+                range-key="value"
+                range="{{category}}"
+            >
+                <view class="picker">
+                    {{category[arrayIndex].value}}
+                </view>
+            </picker>
+        </van-cell>
+        <van-cell center title="宠物品种" required>
+            <input 
+                model:value="{{ petBreed }}" 
+                placeholder="泰迪，英短" 
+                maxlength="10"
+                bindinput="handleChange"
+            />
+        </van-cell>
+        <van-cell center title="宠物体重" required>
+            <input
+                model:value="{{ weight }}"
+                type="number"
+                maxlength="3"
+                placeholder="请输入" 
+                bindinput="handleChange"
+            />
+            <view slot="right-icon">
+                kg
+            </view>
+        </van-cell>
+        <van-cell center title="宠物性别" model:value="{{ sex }}" is-link
+        bind:click="showSexModel" ></van-cell>
+        <van-cell center title="是否绝育" model:value="{{ isSterilization }}" is-link 
+        bind:click="showPopup"></van-cell>
+        <van-cell center title="宠物生日" is-link>
+            <picker 
+                mode="date" 
+                model:value="{{ birthday }}" 
+                start="2000-01-01" 
+                end="2030-12-31" 
+                bindchange="handleChange"
+            >
+                <view wx:if="{{ birthday == '' }}">
+                    选择宝贝生日
+                </view>
+                <view wx:else>
+                    {{ birthday }}
+                </view>
+            </picker>
+        </van-cell>
+    </van-cell-group>
+
+    <van-button 
+        block 
+        round
+        custom-style="margin-top: 100rpx; width:700rpx; " 
+        disabled="{{ disabled }}" 
+        type="{{ type }}"
+        bind:click="addPetsForm"
+    >
+        确定提交
+    </van-button>
+
+</view>
+<!-- 宠物性别model -->
+<van-popup custom-class="bg-light" round show="{{ showSexModel }}" position="bottom" bind:close="onClose">
+    <van-button block data-sex="公" bindtap="handleSex">公</van-button>
+    <van-button block data-sex="母" bindtap="handleSex">母</van-button>
+    <van-button block bind:click="onClose" hairline="{{ false }}" custom-style="margin-top: 30rpx; " custom-class="border-0">取消</van-button>
+</van-popup>
+<!-- 是否绝育model -->
+<van-popup custom-class="bg-light" round show="{{ show }}" position="bottom" bind:close="onClose">
+    <van-button block data-sterilization="是" bindtap="handleSterilization">是</van-button>
+    <van-button block data-sterilization="否" bindtap="handleSterilization">否</van-button>
+    <van-button block bind:click="onClose" hairline="{{ false }}" custom-style="margin-top: 30rpx; " custom-class="border-0">取消</van-button>
+</van-popup>
